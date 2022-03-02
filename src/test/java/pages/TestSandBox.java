@@ -2,7 +2,7 @@ package pages;
 
 public class TestSandBox extends BasePage{
 
-    private String DropDownSandbox = "//div[@rel-title='Select Country']//p//select";
+    private static String DropDownSandbox = "//div[@rel-title='Select Country']//p//select";
 
     public TestSandBox() {
         super(driver);

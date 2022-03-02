@@ -1,17 +1,22 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 public class BasePage {
     protected static WebDriver driver;
     private static WebDriverWait wait;
+    private static Actions actions;
 
     static{
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -23,6 +28,7 @@ public class BasePage {
     public BasePage(WebDriver driver){
         BasePage.driver = driver;
         wait = new WebDriverWait(driver, 10);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public static void nagivateTo(String url){
@@ -55,5 +61,39 @@ public class BasePage {
     public void selectFromDropDownByText(String locator, String text){
         Select dropDown = new Select(Find(locator));
         dropDown.selectByVisibleText(text);
+    }
+
+    public void hoverOverElement(String locator){
+        actions.moveToElement(Find(locator));
+    }
+
+    public void doubleClickElement(String locator){
+        actions.doubleClick(Find(locator));
+    }
+
+    public void rigthClickElement(String locator){
+        actions.contextClick(Find(locator));
+    }
+
+    public String getValueFromTable(String locator, int row, int column){
+        String cellNeeded = locator+"/table/tbody/tr["+row+"]/td["+column+"]";
+        return Find(cellNeeded).getText();
+    }
+
+    public void setValueTable(String locator, int row, int column, String message){
+        String cellSet = locator+"/table/tbody/tr["+row+"]/td["+column+"]";
+        Find(cellSet).sendKeys(message);
+    }
+
+    public void switchToIFrame(int iFrameID ){
+        driver.switchTo().frame(iFrameID);
+    }
+
+    public void switchToParentFrame(){
+        driver.switchTo().parentFrame();
+    }
+
+    public void dismissAlert(){
+        driver.switchTo().alert().dismiss();
     }
 }

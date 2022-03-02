@@ -2,8 +2,8 @@ package pages;
 
 public class GooglePage extends BasePage{
 
-    private String SearchButton = "//div[contains(@jsname,'VlcLAe')]//input[contains(@name,'btnK')]";
-    private String SearchField = "//input[@title='Buscar']";
+    private static String SearchButton = "//div[contains(@jsname,'VlcLAe')]//input[contains(@name,'btnK')]";
+    private static String SearchField = "//input[@title='Buscar']";
 
     public GooglePage(){
         super(driver);
