@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,6 +29,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver){
         BasePage.driver = driver;
+        PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 10);
         //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
@@ -95,5 +98,17 @@ public class BasePage {
 
     public void dismissAlert(){
         driver.switchTo().alert().dismiss();
+    }
+
+    /*public void validateText(String locator, String textToValidate){
+        Assert.assertEquals(textToValidate, Find(locator).getText());
+    }*/
+
+    public String textElement(String locator){
+        return Find(locator).getText();
+    }
+
+    public boolean elementIsDisplayed(String locator){
+        return Find(locator).isDisplayed();
     }
 }

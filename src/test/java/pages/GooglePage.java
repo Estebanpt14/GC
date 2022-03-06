@@ -4,6 +4,7 @@ public class GooglePage extends BasePage{
 
     private static String SearchButton = "//div[contains(@jsname,'VlcLAe')]//input[contains(@name,'btnK')]";
     private static String SearchField = "//input[@title='Buscar']";
+    private static String firstResult = "";
 
     public GooglePage(){
         super(driver);
@@ -19,5 +20,9 @@ public class GooglePage extends BasePage{
 
     public void writeGoogleSearch(String message){
         write(SearchField, message);
+    }
+
+    public String takeText(){
+        return textElement(firstResult);
     }
 }

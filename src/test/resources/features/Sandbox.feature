@@ -5,7 +5,11 @@
       Given Navegando en sandbox page
       And Seleccionando un valor de un dropdown
 
-    @Test
     Scenario: Como usuario, quiero obtener el valor de una grilla estatica
       Given Navegando en la grilla statica
-      Then Puedo tommar el valor que quiera
+      Then Puedo tomar el valor que quiera
+
+    @Test
+    Scenario: Como tester, quiero verificar la existencia de una tabla
+      Given Testeando una pagina web
+      Then Verifico la existencia de una tabla
