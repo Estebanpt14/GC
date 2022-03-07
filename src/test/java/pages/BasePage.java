@@ -1,10 +1,7 @@
 package pages;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
@@ -13,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
@@ -97,7 +95,11 @@ public class BasePage {
     }
 
     public void dismissAlert(){
-        driver.switchTo().alert().dismiss();
+        try {
+            driver.switchTo().alert().dismiss();
+        }catch (NoAlertPresentException e){
+            e.printStackTrace();
+        }
     }
 
     /*public void validateText(String locator, String textToValidate){
@@ -110,5 +112,9 @@ public class BasePage {
 
     public boolean elementIsDisplayed(String locator){
         return Find(locator).isDisplayed();
+    }
+
+    public List<WebElement> bringMeAllElements(String locator){
+        return driver.findElements(By.className(locator));
     }
 }
