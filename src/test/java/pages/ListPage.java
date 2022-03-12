@@ -20,10 +20,10 @@ public class ListPage extends BasePage{
         nagivateTo("https://andreidbr.github.io/JS30/06AjaxTypeAhead/index.html");
     }
 
-    public void enterSearchCriteriaList() throws InterruptedException {
+    public void enterSearchCriteriaList(String state) throws InterruptedException {
         try {
             Thread.sleep(600);
-            write(searchListField, "Orlando");
+            write(searchListField, state);
         }catch (NoSuchElementException e){
             System.out.println("The field wasn't found");
             e.printStackTrace();

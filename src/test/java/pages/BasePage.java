@@ -117,4 +117,8 @@ public class BasePage {
     public List<WebElement> bringMeAllElements(String locator){
         return driver.findElements(By.className(locator));
     }
+
+    public static void closeBrowser(){
+        driver.quit();
+    }
 }
