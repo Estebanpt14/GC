@@ -18,6 +18,7 @@ dependencies{
     implementation group: 'io.cucumber', name: 'cucumber-core', version: '7.2.3'
     // https://mvnrepository.com/artifact/com.aventstack/extentreports-cucumber4-adapter
     implementation group: 'com.aventstack', name: 'extentreports-cucumber4-adapter', version: '1.0.7'
+
 }
 
 /*test{

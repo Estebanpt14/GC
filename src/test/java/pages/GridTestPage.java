@@ -3,8 +3,8 @@ package pages;
 
 public class GridTestPage extends BasePage{
 
-    private static String locator = "https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics";
-    private static String table = "//article[@lang='en-US']//div//table";
+    private static String locator = "https://www.globalsqa.com/angularJs-protractor/WebTable/";
+    private static String table = "//table[@st-table='rowCollection']";
     private static String firstTextToValidate = "";
 
     public GridTestPage() {

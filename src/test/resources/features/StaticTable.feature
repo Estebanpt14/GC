@@ -6,7 +6,7 @@ Feature: Test acciones en una static table
   Background: Navigate to table web app
     Given Navegando en la grilla statica
 
-    @Smoke @Regression
+    @Smoke
   Scenario: Como usuario, quiero obtener el valor de una grilla estatica
   Then Puedo tomar el valor que quiera
 

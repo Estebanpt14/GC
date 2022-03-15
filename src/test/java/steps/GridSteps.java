@@ -28,7 +28,7 @@ public class GridSteps {
 
     @Then("^Puedo tomar el valor que quiera$")
     public void TakeTheValue(){
-        Assert.assertEquals("", gridTestPage.takeGridText(1,1));
-        //System.out.println(gridTestPage.takeGridText(1,1));
+        //Assert.assertEquals("", gridTestPage.takeGridText(1,1));
+        System.out.println(gridTestPage.takeGridText(2,2));
     }
 }

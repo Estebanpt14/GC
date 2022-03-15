@@ -77,7 +77,7 @@ public class BasePage {
     }
 
     public String getValueFromTable(String locator, int row, int column){
-        String cellNeeded = locator+"/table/tbody/tr["+row+"]/td["+column+"]";
+        String cellNeeded = locator+"/tbody/tr["+row+"]/td["+column+"]";
         return Find(cellNeeded).getText();
     }
 
@@ -86,12 +86,19 @@ public class BasePage {
         Find(cellSet).sendKeys(message);
     }
 
+    public void sendKeysToWeb(String locator, String keys){
+        Find(locator).sendKeys(keys);
+    }
     public void switchToIFrame(int iFrameID ){
         driver.switchTo().frame(iFrameID);
     }
 
     public void switchToParentFrame(){
         driver.switchTo().parentFrame();
+    }
+
+    public void goToLinkByText(String linkText){
+        driver.findElement(By.linkText(linkText)).click();
     }
 
     public void dismissAlert(){
@@ -120,5 +127,10 @@ public class BasePage {
 
     public static void closeBrowser(){
         driver.quit();
+    }
+
+    public void selectListElement(String locator, int index){
+        List<WebElement> results = driver.findElements(By.xpath(locator));
+        results.get(index).click();
     }
 }
